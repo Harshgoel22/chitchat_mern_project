@@ -1,5 +1,4 @@
 require('dotenv').config();
-const express = require('express');
 const {student} = require('./mongodb');
 const {app} = require('./nodemailer.js');
 const http = require("http")
@@ -49,9 +48,10 @@ app.post('/updateRecentTab',async (req,res)=>{
 })
 
 //socket io connection
+const url = process.env.BASE_URL || "http://localhost:3000";
 const io = new Server(server, {
     cors: {
-        origin: "http://localhost:3000",
+        origin: `${url}`,
         methods: ["GET","POST"]
     }
 });
@@ -191,9 +191,9 @@ app.post('/deleteMsg',async (req,res)=>{
     }
 })
 
-if(process.env.NODE_ENV == "production"){
-    app.use(express.static("frontend/build"));
-}
+// if(process.env.NODE_ENV == "production"){
+//     app.use(express.static("frontend/build"));
+// }
 
 const port = process.env.PORT || 5000;
 
