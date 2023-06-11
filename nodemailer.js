@@ -47,7 +47,7 @@ app.post('/sendotp', (req, res) => {
                     }, 60000
                 )
                 console.log(`Mail has been sent to ${'****'+email.slice(6)}.`);
-                res.send({success: `Mail has been sent to ${'****'+email.slice(3)}. OTP is valid till ${newTime}.`,error: ""})
+                res.send({success: `Mail has been sent to ${'****'+email.slice(3)}. OTP is valid till ${time}.`,error: ""})
             }
 
         }
