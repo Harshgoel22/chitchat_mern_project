@@ -23,15 +23,14 @@ app.post('/sendotp', (req, res) => {
     }
 
     let newTime = new Date();
-    newTime.setMinutes(newTime.getMinutes() + 1);
-    newTime = newTime.toLocaleTimeString();
+    let time = newTime.getHours()+":"+(newTime.getMinutes()+1)+":"+newTime.getSeconds();
     var str1=`<p>Enter the otp: ${otp} to verify your email address</p>`;
 
     var options = {
         from: 'hgoel1260@gmail.com',
         to: `${email}`,
         subject: "Joining ChitChat Community",
-        html: `<div>${str1}<p>OTP is valid till ${newTime}</p></div>`
+        html: `<div>${str1}<p>OTP is valid till ${time}</p></div>`
 
     };
     transporter.sendMail(
