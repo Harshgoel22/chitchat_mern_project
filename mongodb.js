@@ -19,7 +19,7 @@ const objectSchema = new Schema({
     email: {type: String, required: true, unique: true},
     pasword: {type: String, required: true},
     confirm_pasword: {type: String, required: true},
-    online: {type: String, default: 'No'},
+    online: {type: String, default: 'Offline'},
     recentTab: [{
         username: {type: String},
         fname: {type: String},
